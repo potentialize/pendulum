@@ -1,3 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="tile_padding_horizontal">10dp</dimen>
+    <dimen name="tile_padding_vertical">10dp</dimen>
+    <dimen name="tile_height">90dp</dimen><!-- TODO: Make relative to tile width -->
+    <dimen name="tile_margin_fix">5dp</dimen>
+    <dimen name="tile_space_between_horizontal">12dp</dimen>
+    <dimen name="tile_space_between_vertical">12dp</dimen>
+    <dimen name="tile_border_radius">10dp</dimen>
 </resources>

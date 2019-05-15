@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Pendulum</string>
     <string name="action_settings">Settings</string>
+
+    <!-- PaneActivity -->
+    <string name="activity_pane_title">Dashboard</string>
 </resources>
