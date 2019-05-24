@@ -1,20 +1,26 @@
 package com.example.pendulum.database.daos;
 
-@dao
-public class TileDao {
-    @Query("SELECT * FROM user")
-    List<User> getAll();
+import com.example.pendulum.database.entities.Tile;
 
-    @Query("SELECT * FROM user WHERE uid IN (:userIds)")
-    List<User> loadAllByIds(int[] userIds);
+import java.util.List;
 
-    @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
-            "last_name LIKE :last LIMIT 1")
-    User findByName(String first, String last);
+import androidx.lifecycle.LiveData;
+import androidx.room.*;
+
+@Dao
+public interface TileDao {
+    @Query("SELECT * FROM tiles ORDER BY position ASC")
+    LiveData<List<Tile>> getAll();
+
+    @Query("SELECT * FROM tiles WHERE id IN (:tileIds)")
+    List<Tile> loadAllByIds(int[] tileIds);
+
+    @Query("UPDATE tiles SET position = :newPosition WHERE id = :tileId")
+    void updatePosition(int tileId, int newPosition);
 
     @Insert
-    void insertAll(User... users);
+    void insert(Tile... tiles);
 
     @Delete
-    void delete(User user);
+    void delete(Tile tile);
 }

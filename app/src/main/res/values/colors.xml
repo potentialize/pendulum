@@ -10,6 +10,7 @@
     <!-- backgrounds -->
     <color name="colorBackground">#FCF7FD</color>
     <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceActive">#EEEEEE</color>
 
     <!-- text -->
     <color name="colorOnPrimary">#FFFFFF</color>
