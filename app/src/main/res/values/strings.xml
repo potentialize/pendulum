@@ -10,6 +10,7 @@
 
     <!-- AddTileActivity -->
     <string name="title_activity_add_tile">Add to dashboard</string>
+    <string name="title_activity_timer">Timer</string>
     <string name="input_tile_name_placeholder">Enter name</string>
     <string name="input_tile_name_is_empty_error">Field can\'t be empty</string>
 </resources>

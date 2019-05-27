@@ -7,6 +7,8 @@ import com.example.pendulum.R;
 import com.example.pendulum.addTileActivity.AddTileActivity;
 import com.example.pendulum.database.AppDatabase;
 import com.example.pendulum.database.entities.*;
+import com.example.pendulum.timerActivity.TimerActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -59,6 +61,10 @@ public class PaneActivity extends AppCompatActivity {
         mViewModel = ViewModelProviders.of(this).get(PaneActivityViewModel.class);
         mViewModel.getPane(mPaneId).observe(this, (List<Tile> tiles) -> {
             mAdapter.setTiles(tiles);
+        });
+        mViewModel.getLastOpenTimer().observe(this, (Long openTimerId) -> {
+            // open timer was found, go to timer activity
+            openTimerActivity(mPaneId, openTimerId);
         });
         mViewModel.getSelectedTileIds().observe(this, (List<Long> ids) -> {
             mAdapter.setSelectedTileIds(ids);
@@ -120,6 +126,19 @@ public class PaneActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    public void openTimerActivity(Long tileId) {
+        Intent intent = new Intent(this, TimerActivity.class);
+        intent.putExtra(TimerActivity.EXTRA_TILE_ID, tileId);
+        startActivity(intent);
+    }
+
+    public void openTimerActivity(Long tileId, Long actId) {
+        Intent intent = new Intent(this, TimerActivity.class);
+        intent.putExtra(TimerActivity.EXTRA_TILE_ID, tileId);
+        intent.putExtra(TimerActivity.EXTRA_ACTIVITY_ID, actId);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -129,6 +148,7 @@ public class PaneActivity extends AppCompatActivity {
                 return true;
             case R.id.action_edit:
                 // edit selected tile
+                // TODO
                 return true;
             case R.id.action_add:
                 Intent intent = new Intent(this, AddTileActivity.class);

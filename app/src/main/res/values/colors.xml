@@ -3,7 +3,8 @@
     <!-- primary color -->
     <color name="colorPrimary">#9C27B0</color>
     <color name="colorPrimaryDark">#6F1C7D</color>
-    <color name="colorPrimaryDarker">#520D5E</color>
+    <!--<color name="colorPrimaryDarker">#520D5E</color>-->
+    <color name="colorPrimaryDarker">#2A172D</color>
     <color name="colorPrimaryLight">#D088DD</color>
     <!--<color name="colorPrimaryLighter">#F8EAFA</color>-->
     <color name="colorPrimaryLighter">#F2CFF8</color>

@@ -30,4 +30,7 @@ public class Tile {
 
     @ColumnInfo(name = "position")
     public int position; // order in the pane
+
+    @ColumnInfo(name = "type")
+    public String type = "timer"; // timer or pane
 }

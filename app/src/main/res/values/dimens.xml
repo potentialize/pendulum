@@ -10,4 +10,6 @@
     <!-- clearance around form items -->
     <dimen name="form_margin_horizontal">8dp</dimen>
     <dimen name="form_margin_vertical">8dp</dimen>
+
+    <dimen name="timer_height">70dp</dimen>
 </resources>

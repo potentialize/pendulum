@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.pendulum.database.AppDatabase;
 import com.example.pendulum.database.DatabaseClient;
+import com.example.pendulum.database.daos.ActivityDao;
 import com.example.pendulum.database.daos.TileDao;
 import com.example.pendulum.database.entities.Tile;
 import com.example.pendulum.helpers.MutableLiveDataArrayList;
@@ -14,14 +15,18 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 public class PaneActivityViewModel extends AndroidViewModel {
 
     private static final String TAG = "PaneActivityViewModel";
 
     private TileDao mTileDao;
+    private ActivityDao mActivityDao;
+
     private MutableLiveDataArrayList<Long> mActiveTileIds = new MutableLiveDataArrayList<>();
     private MutableLiveDataArrayList<Long> mSelectedTileIds = new MutableLiveDataArrayList<>();
+    private MutableLiveData<Long> mLastOpenTimer= new MutableLiveData<>();
 
 
 
@@ -32,6 +37,7 @@ public class PaneActivityViewModel extends AndroidViewModel {
 
         AppDatabase db = DatabaseClient.getInstance(application);
         mTileDao = db.getTileDao();
+        mActivityDao = db.getActivityDao();
     }
 
 
@@ -187,5 +193,36 @@ public class PaneActivityViewModel extends AndroidViewModel {
     public MutableLiveDataArrayList<Long> getSelectedTileIds() {
         // TODO: make immutable
         return mSelectedTileIds;
+    }
+
+    public LiveData<Long> getLastOpenTimer() {
+        if (mLastOpenTimer.getValue() == null) {
+            new GetLastOpenTimerAsync(mActivityDao, mLastOpenTimer).execute();
+        }
+
+        return mLastOpenTimer;
+    }
+    private static class GetLastOpenTimerAsync extends AsyncTask<Void, Void, Long> {
+        private ActivityDao mActivityDao;
+        private MutableLiveData<Long> mLastOpenTimer;
+
+        GetLastOpenTimerAsync(ActivityDao activityDao, MutableLiveData<Long> lastOpenTimer) {
+            mActivityDao = activityDao;
+
+            mLastOpenTimer = lastOpenTimer;
+        }
+
+        @Override
+        protected Long doInBackground(Void... params) {
+            return mActivityDao.getLastOpenTimer();
+        }
+
+        @Override
+        protected void onPostExecute(Long id) {
+            if (id != null) {
+                mLastOpenTimer.setValue(id);
+            }
+            super.onPostExecute(id);
+        }
     }
 }

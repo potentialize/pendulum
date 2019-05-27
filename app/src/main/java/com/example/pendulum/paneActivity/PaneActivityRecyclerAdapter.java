@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.pendulum.R;
 import com.example.pendulum.database.entities.Tile;
+import com.example.pendulum.timerActivity.TimerActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +31,7 @@ public class PaneActivityRecyclerAdapter
     // PROPERTIES
     private LayoutInflater mInflater;
     private PaneActivityViewModel mViewModel;
+    private PaneActivity mContext;
 
     private List<Tile> mTiles = new ArrayList<>();
     private List<Long> mActiveTileIds = new ArrayList<>();
@@ -41,6 +43,7 @@ public class PaneActivityRecyclerAdapter
 
     // CONSTRUCTOR
     public PaneActivityRecyclerAdapter(PaneActivity context) {
+        mContext = context;
         mViewModel = context.mViewModel;
         mInflater = LayoutInflater.from(context);
     }
@@ -207,7 +210,8 @@ public class PaneActivityRecyclerAdapter
                 if (mViewModel.isTileSelected(tileId)) {
                     mViewModel.setTileSelected(tileId, false);
                 } else {
-                    // TODO: pane
+                    // open timer
+                    mContext.openTimerActivity(tileId);
                 }
             });
 
