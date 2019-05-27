@@ -12,15 +12,28 @@ public interface TileDao {
     @Query("SELECT * FROM tiles ORDER BY position ASC")
     LiveData<List<Tile>> getAll();
 
-    @Query("SELECT * FROM tiles WHERE id IN (:tileIds)")
-    List<Tile> loadAllByIds(int[] tileIds);
+    @Query("SELECT * FROM tiles WHERE parent_id = :paneId ORDER BY position ASC")
+    LiveData<List<Tile>> getPane(Long paneId);
+
+    @Query("SELECT COUNT(id) FROM tiles WHERE parent_id = :paneId")
+    int countPaneTiles(Long paneId);
 
     @Query("UPDATE tiles SET position = :newPosition WHERE id = :tileId")
-    void updatePosition(int tileId, int newPosition);
+    void updatePosition(Long tileId, int newPosition);
 
+    // TODO: auto increment position
     @Insert
-    void insert(Tile... tiles);
+    Long insert(Tile tile);
 
-    @Delete
-    void delete(Tile tile);
+    // NOTE: dashboard pane (id = 1) cannot be removed, or the app would crash
+    @Query("DELETE FROM tiles WHERE id = :id AND NOT id = 1")
+    void deleteById(Long id);
+
+    // NOTE: dashboard pane (id = 1) cannot be removed, or the app would crash
+    @Query("DELETE FROM tiles WHERE id in (:ids) AND NOT id = 1")
+    void deleteByIds(List<Long> ids);
+
+    // NOTE: dashboard pane (id = 1) cannot be removed, or the app would crash
+    @Query("DELETE FROM tiles WHERE NOT id = 1")
+    void deleteAll();
 }

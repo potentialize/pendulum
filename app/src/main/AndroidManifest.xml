@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PaneActivity"
+            android:name=".addTileActivity.AddTileActivity"
+            android:label="@string/title_activity_add_tile"
+            android:parentActivityName=".paneActivity.PaneActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pendulum.paneActivity.PaneActivity" />
+        </activity>
+        <activity
+            android:name=".paneActivity.PaneActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

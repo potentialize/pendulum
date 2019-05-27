@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Pendulum</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_add">Add</string>
+    <string name="action_submit">Submit</string>
 
     <!-- PaneActivity -->
-    <string name="activity_pane_title">Dashboard</string>
+    <string name="title_activity_pane">Dashboard</string>
+
+    <!-- AddTileActivity -->
+    <string name="title_activity_add_tile">Add to dashboard</string>
+    <string name="input_tile_name_placeholder">Enter name</string>
+    <string name="input_tile_name_is_empty_error">Field can\'t be empty</string>
 </resources>

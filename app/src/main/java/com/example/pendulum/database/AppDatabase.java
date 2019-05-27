@@ -13,5 +13,6 @@ import com.example.pendulum.database.daos.TileDao;
     exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
+    public static final Long DASHBOARD_ID = 1L; // NOTE: room starts auto incrementing from 1
     public abstract TileDao getTileDao();
 }

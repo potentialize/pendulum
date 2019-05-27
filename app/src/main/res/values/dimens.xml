@@ -6,4 +6,8 @@
     <dimen name="tile_margin_horizontal">6dp</dimen>
     <dimen name="tile_margin_vertical">6dp</dimen>
     <dimen name="tile_border_radius">10dp</dimen>
+
+    <!-- clearance around form items -->
+    <dimen name="form_margin_horizontal">8dp</dimen>
+    <dimen name="form_margin_vertical">8dp</dimen>
 </resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".addTileActivity.AddTileActivity"
+    tools:showIn="@layout/activity_add_tile"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/form_margin_horizontal"
+    android:paddingEnd="@dimen/form_margin_horizontal"
+    android:paddingTop="@dimen/form_margin_vertical"
+    android:paddingBottom="@dimen/form_margin_vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_tile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_tile_name_placeholder"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="center"
+        android:text="Add sample data"
+        android:onClick="addSampleData"/>
+</LinearLayout>

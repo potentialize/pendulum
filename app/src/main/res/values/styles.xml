@@ -1,13 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:statusBarColor">@color/colorSurface</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="actionModeBackground">@color/colorActionMode</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:colorBackground">?attr/colorPrimary</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,11 +18,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppTheme.AppBarOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:background">@color/colorSurface</item>
         <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLighter</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="test" parent="ThemeOverlay.MaterialComponents.ActionBar">
+
+    </style>
 
 </resources>
