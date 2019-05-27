@@ -169,4 +169,17 @@ public class TimerActivityViewModel extends AndroidViewModel {
             return null;
         }
     }
+
+
+
+
+//    private Runnable runnable = new Runnable() {
+//        @Override
+//        public void run() {
+//
+//            mTimer.setValue();
+//
+//            handler.postDelayed(this, 1000);
+//        }
+//    };
 }
